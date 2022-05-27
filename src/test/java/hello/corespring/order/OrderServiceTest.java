@@ -1,18 +1,23 @@
 package hello.corespring.order;
 
-import hello.corespring.member.Grade;
-import hello.corespring.member.Member;
-import hello.corespring.member.MemberService;
-import hello.corespring.member.MemberServiceImpl;
+import hello.corespring.AppConfig;
+import hello.corespring.member.*;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class OrderServiceTest {
+    private OrderService orderService;
+    private MemberService memberService;
 
-    private final OrderService orderService = new OrderServiceImpl();
-    private final MemberService memberService = new MemberServiceImpl();
+    @BeforeEach
+    void setUp() {
+        AppConfig appConfig = new AppConfig();
+        orderService = appConfig.orderService();
+        memberService = appConfig.memberService();
+    }
 
     @Test
     void createOrderWhenMemberGradeVip() {
