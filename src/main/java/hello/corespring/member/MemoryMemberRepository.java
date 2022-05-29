@@ -13,7 +13,7 @@ public class MemoryMemberRepository implements MemberRepository {
         return instance;
     }
 
-    private MemoryMemberRepository() {}
+    public MemoryMemberRepository() {}
 
     @Override
     public void save(Member member) {
