@@ -2,7 +2,9 @@ package hello.corespring.discount;
 
 import hello.corespring.member.Grade;
 import hello.corespring.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     public static final int DISCOUNT_PERCENT = 10;

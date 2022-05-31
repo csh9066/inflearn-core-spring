@@ -2,6 +2,7 @@ package hello.corespring.discount;
 
 import hello.corespring.member.Grade;
 import hello.corespring.member.Member;
+import org.springframework.stereotype.Component;
 
 public class FixDiscountPolicy implements DiscountPolicy {
 
