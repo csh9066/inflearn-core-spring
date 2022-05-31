@@ -1,6 +1,7 @@
 package hello.corespring.scan.filter;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ComponentFilterAppConfigTest {
 
@@ -16,10 +18,10 @@ public class ComponentFilterAppConfigTest {
         ApplicationContext ac = new AnnotationConfigApplicationContext(ComponentFilterAppConfig.class);
 
         BeanA beanA = ac.getBean(BeanA.class);
-        BeanB beanB = ac.getBean(BeanB.class);
 
+        assertThatThrownBy(() -> ac.getBean(BeanB.class))
+                .isInstanceOf(NoSuchBeanDefinitionException.class);
         assertThat(beanA).isNotNull();
-        assertThat(beanB).isNull();
     }
 
     @Configuration

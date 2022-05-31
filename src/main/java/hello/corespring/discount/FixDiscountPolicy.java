@@ -2,8 +2,11 @@ package hello.corespring.discount;
 
 import hello.corespring.member.Grade;
 import hello.corespring.member.Member;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+@Component
+@Primary
 public class FixDiscountPolicy implements DiscountPolicy {
 
     private int discountFixAmount = 1000;
